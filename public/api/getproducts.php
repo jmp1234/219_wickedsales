@@ -1,10 +1,13 @@
 <?php
 
 require_once('mysqlconnect.php');
+require_once('functions.php');
+
+set_exception_handler('handleError'); //handles the accidental errors
 
 $query = "SELECT p.`id`, p.`name`, p.`price`,
     i.`url` AS `images`
-  FROM `products` AS p
+  FROM `products` AS p 
   JOIN `images` AS i
     ON p.`id` = i.`products_id`
   ORDER BY p.`id`
@@ -12,6 +15,10 @@ $query = "SELECT p.`id`, p.`name`, p.`price`,
 
 
 $result = mysqli_query($conn, $query);
+
+if(!$result) {
+  throw new Exception('invalid query: '. mysqli_error($conn));
+}
 
 $data = [];
 
@@ -29,9 +36,7 @@ while($row = mysqli_fetch_assoc($result)) {
     $row['images'] = [];
     //array_push($row['images'], $image);
     $row['images'][] = $image;
-
     $row['price'] = intval($row['price']);
-
     $data[$currentID] = $row;
   }
 }
