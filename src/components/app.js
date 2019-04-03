@@ -1,14 +1,18 @@
 import React from 'react';
+import 'materialize-css/dist/css/materialize.min.css';
+import 'materialize-css/dist/js/materialize.min';
 import '../assets/css/app.scss';
-import logo from '../assets/images/logo.svg';
+import {Route} from 'react-router-dom';
+// import ProductRoutes from './products/index';
+import ProductRoutes from './products';
+import Home from './home';
 
 const App = () => (
     <div>
         <div className="app">
-            <img src={logo} className="logo rotate"/>
-            <img src={logo} className="logo rotate"/>
-            <h1>Welcome to React</h1>
-            <h1>Welcome to React</h1>
+
+          <Route exact path="/" component={Home}/>
+          <Route path="/products" component={ProductRoutes} />
         </div>
     </div>
 );
