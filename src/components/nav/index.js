@@ -1,13 +1,28 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Link} from 'react-router-dom';
 import Sidenav from './sidenav';
 
 
 class Nav extends React.Component {
 
+  renderLinks() {
+    return (
+      <Fragment>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/products">Products</Link>
+        </li>
+      </Fragment>
+    )
+  }
+
   render() {
+
+    const links = this.renderLinks()
     return(
-      <div>
+      <Fragment>
         <nav className = "lime darken-3">
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/"> Wicked Sales</Link>
@@ -16,21 +31,13 @@ class Nav extends React.Component {
             </a>
 
             <ul className="right hide-on-med-and-down">
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/products">Products</Link>
-              </li>
-              <li>
-                <Link to="/">Sign In</Link>
-              </li>
+              {links}
             </ul>
           </div>
         </nav>
-        <Sidenav />
+        <Sidenav links={links}/>
 
-      </div>
+      </Fragment>
 
     )
   }
