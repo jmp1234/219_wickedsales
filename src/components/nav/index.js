@@ -23,7 +23,7 @@ class Nav extends React.Component {
     const links = this.renderLinks()
     return(
       <Fragment>
-        <nav className = "lime darken-3">
+        <nav className = "green darken-3">
           <div className="nav-wrapper">
             <Link className="brand-logo" to="/"> Wicked Sales</Link>
             <a href="#" data-target="sidenav" className="sidenav-trigger">
