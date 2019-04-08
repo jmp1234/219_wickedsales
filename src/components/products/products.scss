@@ -1,0 +1,50 @@
+.products{
+  .product-item {
+    cursor: pointer;
+
+    &:hover {
+      background-color: #bdd4e7;
+      background-image: linear-gradient(315deg, #bdd4e7 0%, #8693ab 74%);
+
+    }
+  }
+
+  .product-details {
+    .product-price {
+      font-size: 3.5em;
+      font-weight: bold;
+    }
+
+    .carousel {
+      .indicators {
+        background-color: #eee;
+      }
+    }
+
+    .add-to-cart {
+      font-size: 2em;
+
+      .qty-container {
+        margin: 0 30px;
+
+        button {
+          margin: 0 12px;
+        }
+
+        .product-qty {
+          padding: 5px 15px;
+          position: relative;
+          top: 5px;
+          background-color: #efefef;
+        }
+      }
+
+      button {
+        position: relative;
+        top: 2px;
+      }
+    }
+  }
+
+
+}
