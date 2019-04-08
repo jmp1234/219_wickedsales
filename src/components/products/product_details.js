@@ -28,15 +28,15 @@ class ProductDetails extends React.Component {
       });
     }
 
-    this.createCarousel();
+    // this.createCarousel();
 
   }
 
-  createCarousel() {
-    var elems = document.querySelectorAll('.carousel');
-    M.Carousel.init(elems);
-
-  }
+  // createCarousel() {
+  //   var elems = document.querySelectorAll('.carousel');
+  //   M.Carousel.init(elems);
+  //
+  // }
 
 
   render() {
@@ -53,7 +53,7 @@ class ProductDetails extends React.Component {
 
     return(
       <div className="product-details row">
-        <div className="carousel col s3"><ImageCarousel  images={images}/></div>
+        <ImageCarousel  images={images}/>
         <h1 className="center">{name}</h1>
         <p className="center">{description}</p>
       </div>
