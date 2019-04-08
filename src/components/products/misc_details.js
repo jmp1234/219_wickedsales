@@ -4,7 +4,6 @@ import {toWords} from '../../helpers';
 export default props => {
 
   const {details} = props;
-  console.log('objects keys: ', Object.keys(details));
 
   const additionalInfo = Object.keys(details).map( (key) => {
 
