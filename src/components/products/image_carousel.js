@@ -6,9 +6,14 @@ class ImageCarousel extends React.Component {
   }
 
   componentDidMount() {
-    console.log('carousel div: ', this.carousel);
 
-    M.Carousel.init(this.carousel);
+    const config = {
+      numVisible: 1,
+      indicators: true,
+      fullWidth: true
+    };
+
+    M.Carousel.init(this.carousel, config);
   }
 
 
@@ -17,13 +22,13 @@ class ImageCarousel extends React.Component {
     const items = this.props.images.map( (image, index) => {
       return(
         <a className="carousel-item" key={image} href="#">
-          <img  src={`/dist/${image}`} alt="Product Image"/>
+          <img src={`/dist/${image}`} alt="Product Image"/>
         </a>
       )
     })
 
     return(
-      <div ref={(element) => this.carousel = element} className="carousel col s3">
+      <div ref={(element) => this.carousel = element} className="carousel carousel-slider col s12 m8">
         {items}
       </div>
     )
