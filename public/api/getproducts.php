@@ -5,9 +5,9 @@ require_once('mysqlconnect.php');
 require_once('functions.php');
 
 set_exception_handler('handleError'); //handles the accidental errors
-require_once('config.php');
+require_once('config.php'); //start the session
 
-
+//SELECT PRODUCT ID, NAME, PRICE, IMAGES
 $query = "SELECT p.`id`, p.`name`, p.`price`,
     i.`url` AS `images`
   FROM `products` AS p
