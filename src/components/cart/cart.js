@@ -31,7 +31,6 @@ class Cart extends React.Component {
   }
 
   render() {
-    console.log('state: ', this.state);
     const {items, meta} = this.state;
     let totalItems = 0;
 
