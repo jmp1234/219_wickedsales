@@ -31,6 +31,9 @@ if(empty($input['password'])) {
 
 $email = $input['email'];
 $password = $input['password'];
+
+$email = addslashes($email); //escape out all quote characters in the string. Protects from SLQ injection
+
 $hashedPassword = sha1($password);
 
 unset($input['password']);
