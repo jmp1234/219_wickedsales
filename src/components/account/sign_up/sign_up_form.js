@@ -10,17 +10,15 @@ const SignUpForm = props => {
     return(
       <form onSubmit={handleSubmit(signUp)} >
         <div className="row">
-          <Field  col="s12" id="name" name="name" component={Input} label="Full Name"/>
+          <Field  col="s6" id="name" name="name" component={Input} label="Full Name"/>
+          <Field  col="s6" id="bob" name="email" component={Input} label="Email"/>
         </div>
+
         <div className="row">
-          <Field  col="s12" id="bob" name="email" component={Input} label="Email"/>
+          <Field col="s6" id="newPassword" name="password" component={Input} type="password" label="Password"/>
+          <Field col="s6" id="confirmPassword" name="confirmPassword" component={Input} type="password" label="Confirm Password"/>
         </div>
-        <div className="row">
-          <Field col="s12" id="newPassword" name="password" component={Input} type="password" label="Password"/>
-        </div>
-        <div className="row">
-          <Field col="s12" id="confirmPassword" name="confirm password" component={Input} type="password" label="Confirm Password"/>
-        </div>
+
 
 
         <div className="row">
@@ -32,8 +30,12 @@ const SignUpForm = props => {
     )
 }
 
-function validate({email, password}) {
+function validate({name, email, password, confirmPassword}) {
   const errors = {};
+
+  if(!name) {
+    errors.name = 'please enter your name'
+  }
 
   if(!email) {
     errors.email = 'Please enter your email';
@@ -42,6 +44,13 @@ function validate({email, password}) {
   if(!password) {
     errors.password = 'Please enter your password';
   }
+
+  if(!confirmPassword) {
+    errors.confirmPassword = 'Please confirm your password';
+  } else if(password !== confirmPassword) {
+    errors.confirmPassword = 'Your passwords are not the same';
+  }
+
 
   return errors;
 
