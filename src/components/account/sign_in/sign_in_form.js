@@ -26,6 +26,22 @@ const SignInForm = props => {
   )
 }
 
+function validate({email, password}) {
+  const errors = {};
+
+  if(!email) {
+    errors.email = 'Please enter your email';
+  }
+
+  if(!password) {
+    errors.password = 'Please enter your password';
+  }
+
+  return errors;
+
+}
+
 export default reduxForm({
-  form: 'sign-in-form' //this is where we set the name of the form - we just made 'sign-in-form' up
+  form: 'sign-in-form', //this is where we set the name of the form - we just made 'sign-in-form' up
+  validate: validate
 })(SignInForm); //returns a new component
