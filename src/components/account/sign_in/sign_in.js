@@ -1,9 +1,13 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import SignInForm from './sign_in_form';
+import { connect } from 'react-redux';
+import { signIn } from '../../../actions';
 
 class SignIn extends Component {
-  handleSignIn(values) {
+  handleSignIn = (values) => {
     console.log('form values: ', values);
+
+    this.props.signIn(values);
   }
 
   render() {
@@ -16,4 +20,6 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default connect(null, {
+  signIn: signIn
+})(SignIn);
