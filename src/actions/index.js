@@ -1,16 +1,34 @@
 import types from './types';
 import axios from 'axios';
 
+export const checkAuth = () => async dispatch => {
+  const resp = await axios.get('/api/check-auth.php');
+
+  if(resp.data.success) {
+    dispatch({
+      type: types.SIGN_IN,
+      email: resp.data.email
+    });
+  } else {
+    dispatch({
+      type: types.SIGN_OUT
+    });
+  }
+}
+
 
 export function signIn(user) {
   return function(dispatch) {
-    axios.get('/api/sign-in.php').then(resp => {
+    axios.post('/api/sign-in.php', user).then(resp => {
       console.log('Sign In Resp: ', resp);
 
       if(resp.data.success) {
+        localStorage.setItem('signedIn', 'true');
+
         dispatch({
-          type: types.SIGN_IN
-        })
+          type: types.SIGN_IN,
+          email: resp.data.email
+        });
       } else {
         dispatch({
           type: types.SIGN_IN_ERROR
@@ -30,10 +48,14 @@ export function signIn(user) {
 
 
 
-export function signOut(user) {
-
-  return {
-    type: types.SIGN_OUT
+export function signOut() {
+  return function(dispatch) {
+    axios.get('/api/sign-out.php').then(resp => {
+      localStorage.removeItem('signIn');
+      dispatch({
+        type: types.SIGN_OUT
+      })
+    })
   }
 }
 
